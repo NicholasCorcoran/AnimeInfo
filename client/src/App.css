@@ -6,12 +6,14 @@
 .card-wrapper {
   margin-top: 3%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
 .card {
+  max-width: 300px;
 }
 
 .cardinfo {
