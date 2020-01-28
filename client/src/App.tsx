@@ -45,13 +45,22 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Card
-        image={data[0].image_url}
-        title={data[0].title}
-        sdate={data[0].start_date}
-        edate={data[0].end_date}
-        numEpisodes={data[0].episodes.toString()}
-      />
+      <div className="card-wrapper">
+        <Card
+          image={data[0].image_url}
+          title={data[0].title}
+          sdate={data[0].start_date}
+          edate={data[0].end_date}
+          numEpisodes={data[0].episodes.toString()}
+        />
+        <Card
+          image={data[0].image_url}
+          title={data[0].title}
+          sdate={data[0].start_date}
+          edate={data[0].end_date}
+          numEpisodes={data[0].episodes.toString()}
+        />
+      </div>
     </div>
   );
 };
