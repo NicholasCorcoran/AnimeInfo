@@ -11,6 +11,18 @@ interface EpisodeInfo {
   episodes: Array<any>;
 }
 
+interface EpisodeDetails{
+  episode_id: any,
+        title: any,
+        title_japanese: any,
+        title_romanji: any,
+        aired: any,
+        filler: any,
+        recap: any,
+        video_url: any,
+        forum_url: any
+}
+
 export const Episodes: React.FC = () => {
   const [data, setData] = React.useState<EpisodeInfo>({
     request_hash: "",
@@ -37,13 +49,13 @@ export const Episodes: React.FC = () => {
   }, []);
   return (
     <div className="App">
-      <div className="List-wrapper">
-        {data.episodes.map((x: EpisodeInfo) => (
+      <div className="card-wrapper">
+        {data.episodes.map((x: EpisodeDetails) => (
           <List
-            episode_id={x.episodes}
-            title={x.episodes}
-            aired={x.episodes}
-            filler={x.episodes}
+            episode_id={x.episode_id}
+            title={x.title}
+            aired={x.aired}
+            filler={x.filler}
           />
         ))}
       </div>
