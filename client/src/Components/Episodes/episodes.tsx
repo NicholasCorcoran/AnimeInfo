@@ -4,48 +4,46 @@ import { List } from "./list";
 import { episodeList } from "../../http";
 
 interface EpisodeInfo {
-  episode_id: number | undefined;
-  title: string;
-  title_japanese: string;
-  title_romanji: string;
-  aired: string;
-  filler: boolean;
-  recap: boolean;
-  video_url: string;
-  forum_url: string;
+  request_hash: string;
+  request_cached: boolean;
+  request_cache_expiry: number | undefined;
+  episodes_last_page: number | undefined;
+  episodes: Array<any>;
 }
 
 export const Episodes: React.FC = () => {
-  const [data, setData] = React.useState<Array<EpisodeInfo>>([
-    {
-      episode_id: undefined,
-      title: "",
-      title_japanese: "",
-      title_romanji: "",
-      aired: "",
-      filler: false,
-      recap: false,
-      video_url: "",
-      forum_url: ""
-    }
-  ]);
+  const [data, setData] = React.useState<EpisodeInfo>({
+    request_hash: "",
+    request_cached: true,
+    request_cache_expiry: undefined,
+    episodes_last_page: undefined,
+    episodes: [
+      {
+        episode_id: 0,
+        title: "",
+        title_japanese: "",
+        title_romanji: "",
+        aired: "",
+        filler: false,
+        recap: false,
+        video_url: "",
+        forum_url: ""
+      }
+    ]
+  });
 
   React.useEffect(() => {
     episodeList("20").then(setData);
   }, []);
   return (
     <div className="App">
-      <div className="card-wrapper">
-        {data.map((x: EpisodeInfo) => (
+      <div className="List-wrapper">
+        {data.episodes.map((x: EpisodeInfo) => (
           <List
-            //   episode_id: string;
-            //   title: string;
-            //   aired: string;
-            //   filler: boolean;
-            episode_id={x.episode_id}
-            title={x.title}
-            aired={x.aired}
-            filler={x.filler.toString()}
+            episode_id={x.episodes}
+            title={x.episodes}
+            aired={x.episodes}
+            filler={x.episodes}
           />
         ))}
       </div>
