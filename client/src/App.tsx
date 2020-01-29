@@ -8,7 +8,7 @@ export const App: React.FC = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/episodes" component={Episodes} />
+        <Route exact path="/episodes/:id" component={Episodes} />
       </Switch>
     </Router>
   );

@@ -10,11 +10,61 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  align-content: center;
 }
 
 .card {
-  max-width: 300px;
+  width: calc(12vw);
+  height: calc(51vh);
+  border: 1px solid black;
+  border-radius: 10px;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.61);
 }
 
 .cardinfo {
+  color: rgb(242, 242, 242);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.episode-wrapper {
+  display: inline-block;
+  padding-top: 2%;
+}
+
+.info-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: calc(12vw);
+  height: calc(15vh);
+  border: 1px solid black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.61);
+  text-align: left;
+  z-index: 1;
+}
+
+.info {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(242, 242, 242);
+  margin: auto;
+  width: 75%;
+}
+
+.info:hover {
+  height: max-content;
+  text-overflow: unset;
+  white-space: pre-wrap;
+}
+
+.cardinfo:hover {
+  text-overflow: unset;
+  white-space: pre-wrap;
 }

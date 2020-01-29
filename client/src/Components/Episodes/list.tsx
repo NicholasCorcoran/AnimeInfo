@@ -9,9 +9,8 @@ interface ListProps {
 
 export const List: React.FC<ListProps> = (props: ListProps) => {
   return (
-    
-    <div className="card">
-      <div className="cardinfo">
+    <div className="info-wrapper">
+      <div className="info">
         <ul>
           <li>Ep. Number: {props.episode_id}</li>
           <li>Title: {props.title}</li>
