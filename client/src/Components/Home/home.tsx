@@ -3,6 +3,7 @@ import "../../App.css";
 import { Card } from "../AnimeCard/card";
 import { searchTitle } from "../../http";
 import { useHistory } from "react-router";
+import { SearchBar } from "../SearchBar/searchBar";
 
 interface SearchInfo {
   mal_id: number | undefined;
@@ -22,15 +23,26 @@ interface SearchInfo {
 
 export const Home: React.FC = () => {
   const [data, setData] = React.useState<Array<SearchInfo>>([]);
+  const [search, setSearch] = React.useState("");
 
-  React.useEffect(() => {
-    searchTitle("Naruto").then(setData);
-  }, []);
+  //   React.useEffect(() => {
+  //     searchTitle("Naruto").then(setData);
+  //   }, []);
 
   let history = useHistory();
 
   return (
     <div className="App">
+      <div className="searchArea">
+        <SearchBar
+          name={"ShowSearch"}
+          value={search}
+          onChange={(e: React.ChangeEvent<any>) => setSearch(e.target.value)}
+        />
+        <button onClick={() => searchTitle(search).then(setData)}>
+          Search
+        </button>
+      </div>
       <div className="card-wrapper">
         {data.map((x: SearchInfo, index: number) => (
           <Card

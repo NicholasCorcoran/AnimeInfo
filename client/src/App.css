@@ -1,10 +1,11 @@
 .App {
   margin: auto;
   width: 80%;
+  display: flex;
 }
 
 .card-wrapper {
-  margin-top: 3%;
+  margin-top: 5%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -67,4 +68,27 @@
 .cardinfo:hover {
   text-overflow: unset;
   white-space: pre-wrap;
+}
+
+.searchArea {
+  position: absolute;
+  top: 2%;
+  right: 10.5%;
+}
+
+.searchArea button {
+  margin-top: 2%;
+  width: 100px;
+  border-radius: 15px;
+  background-color: rgba(39, 39, 39, 0.788);
+  color: rgb(242, 242, 242);
+  border: 0px;
+  height: 25px;
+}
+
+.searchinput {
+  width: 350px;
+  height: 20px;
+  font-size: 18px;
+  border-radius: 5px;
 }
