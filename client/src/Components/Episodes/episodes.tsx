@@ -4,7 +4,7 @@ import { List } from "./list";
 import { episodeList } from "../../http";
 
 interface ShowIDProps {
-  showID: string;
+  showID: any;
 }
 
 interface EpisodeDetails {
@@ -20,11 +20,12 @@ interface EpisodeDetails {
 }
 
 export const Episodes: React.FC<ShowIDProps> = (props: ShowIDProps) => {
+  console.log(props.showID);
   const [data, setData] = React.useState<Array<EpisodeDetails>>([]);
   const [episodeNum, setEpisodeNum] = React.useState(0);
 
   React.useEffect(() => {
-    episodeList("20").then(x => {
+    episodeList(props.showID.params.id).then(x => {
       console.log(x.episodes[0].filler);
       setData(x.episodes);
       setEpisodeNum(x.episodes_last_page);
