@@ -1,20 +1,103 @@
 .App {
   margin: auto;
   width: 80%;
+  display: flex;
 }
 
 .card-wrapper {
-  margin-top: 3%;
-  display: flex;
+  margin-top: 5%;
+  display: inline-flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* margin-bottom: 5%; */
 }
 
 .card {
-  max-width: 300px;
+  width: calc(12vw);
+  height: calc(47vh);
+  border: 1px solid black;
+  border-radius: 10px;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.61);
+  margin: 9px;
 }
 
 .cardinfo {
+  color: rgb(242, 242, 242);
+  width: calc(11vw);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.episode-wrapper {
+  display: inline-block;
+  padding-top: 2%;
+}
+
+.info-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: calc(12vw);
+  height: calc(15vh);
+  border: 1px solid black;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.61);
+  text-align: left;
+  z-index: 1;
+}
+
+.info {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(242, 242, 242);
+  margin: auto;
+  width: 75%;
+}
+
+.info:hover {
+  height: max-content;
+  text-overflow: unset;
+  white-space: pre-wrap;
+}
+
+.cardinfo:hover {
+  text-overflow: unset;
+  white-space: pre-wrap;
+}
+
+.searchArea {
+  position: absolute;
+  top: 2%;
+  right: 10.5%;
+}
+
+.searchArea button {
+  margin-top: 2%;
+  width: 100px;
+  border-radius: 15px;
+  background-color: rgba(39, 39, 39, 0.788);
+  color: rgb(242, 242, 242);
+  border: 0px;
+  height: 25px;
+}
+
+.searchinput {
+  width: 350px;
+  height: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.img {
+  width: calc(12vw);
+  height: calc(30vh);
+  border-radius: 10px;
 }

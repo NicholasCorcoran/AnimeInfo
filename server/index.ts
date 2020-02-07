@@ -17,4 +17,16 @@ app.post("/api/getAnime", async (req, res) => {
     : res.sendStatus(404).json({ error: "results not found" });
 });
 
+app.post("/api/getEpisodes", async (req, res) => {
+  const info = await axios
+    .get("https://api.jikan.moe/v3/anime/" + req.body.id + "/episodes")
+    .then(x => x.data);
+
+  res.json(info);
+
+  //   info.results.length
+  //     ? res.json(info.results)
+  //     : res.sendStatus(404).json({ error: "results not found" });
+});
+
 app.listen(port, () => console.log("Listening on port ", port));

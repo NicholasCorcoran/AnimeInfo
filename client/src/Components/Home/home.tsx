@@ -2,6 +2,8 @@ import * as React from "react";
 import "../../App.css";
 import { Card } from "../AnimeCard/card";
 import { searchTitle } from "../../http";
+import { useHistory } from "react-router";
+import { SearchBar } from "../SearchBar/searchBar";
 
 interface SearchInfo {
   mal_id: number | undefined;
@@ -20,33 +22,33 @@ interface SearchInfo {
 }
 
 export const Home: React.FC = () => {
-  const [data, setData] = React.useState<Array<SearchInfo>>([
-    {
-      mal_id: undefined,
-      url: "",
-      image_url: "",
-      title: "",
-      airing: false,
-      synopsis: "",
-      type: "",
-      episodes: 0,
-      score: undefined,
-      start_date: "",
-      end_date: "",
-      members: undefined,
-      rated: ""
-    }
-  ]);
+  const [data, setData] = React.useState<Array<SearchInfo>>([]);
+  const [search, setSearch] = React.useState("");
 
-  React.useEffect(() => {
-    searchTitle("Naruto").then(setData);
-  }, []);
+  //   React.useEffect(() => {
+  //     searchTitle("Naruto").then(setData);
+  //   }, []);
+
+  let history = useHistory();
 
   return (
     <div className="App">
+      <div className="searchArea">
+        <SearchBar
+          name={"ShowSearch"}
+          value={search}
+          onChange={(e: React.ChangeEvent<any>) => setSearch(e.target.value)}
+        />
+        <button onClick={() => searchTitle(search).then(setData)}>
+          Search
+        </button>
+      </div>
       <div className="card-wrapper">
-        {data.map((x: SearchInfo) => (
+        {data.map((x: SearchInfo, index: number) => (
           <Card
+            click={() => {
+              history.push("/episodes/" + x.mal_id);
+            }}
             image={x.image_url}
             title={x.title}
             sdate={x.start_date}

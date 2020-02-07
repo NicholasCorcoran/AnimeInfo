@@ -1,9 +1,48 @@
-import React from "react";
+import * as React from "react";
+import "../../App.css";
+import { List } from "./list";
+import { episodeList } from "../../http";
 
-export const Episodes: React.FC = () => {
+interface ShowIDProps {
+  showID: any;
+}
+
+interface EpisodeDetails {
+  episode_id: any;
+  title: any;
+  title_japanese: any;
+  title_romanji: any;
+  aired: any;
+  filler: any;
+  recap: any;
+  video_url: any;
+  forum_url: any;
+}
+
+export const Episodes: React.FC<ShowIDProps> = (props: ShowIDProps) => {
+  console.log(props.showID);
+  const [data, setData] = React.useState<Array<EpisodeDetails>>([]);
+  const [episodeNum, setEpisodeNum] = React.useState(0);
+
+  React.useEffect(() => {
+    episodeList(props.showID.params.id).then(x => {
+      console.log(x.episodes[0].filler);
+      setData(x.episodes);
+      setEpisodeNum(x.episodes_last_page);
+    });
+  }, []);
   return (
-    <div>
-      <h3>Episodes</h3>
+    <div className="App">
+      <div className="episode-wrapper">
+        {data.map((x: EpisodeDetails) => (
+          <List
+            episode_id={x.episode_id}
+            title={x.title}
+            aired={x.aired}
+            filler={x.filler.toString()}
+          />
+        ))}
+      </div>
     </div>
   );
 };
